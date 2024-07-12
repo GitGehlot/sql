@@ -1,0 +1,6 @@
+-- Management want to see all the users who didnot login in past 5 months.
+
+select user_id, max(login_timestamp)
+from logins
+group by user_id
+having max(login_timestamp) < date_add(now(),interval-5 month)
